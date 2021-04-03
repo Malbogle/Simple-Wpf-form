@@ -14,3 +14,18 @@ C:\Users\bbdnet2344\source\repos\wpfLoginForm\obj\Debug\wpfLoginForm.Properties.
 C:\Users\bbdnet2344\source\repos\wpfLoginForm\obj\Debug\wpfLoginForm.csproj.GenerateResource.cache
 C:\Users\bbdnet2344\source\repos\wpfLoginForm\obj\Debug\wpfLoginForm.csproj.CoreCompileInputs.cache
 C:\Users\bbdnet2344\source\repos\wpfLoginForm\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\bbdnet2344\source\repos\Craig work items\wpfLoginForm\bin\Debug\wpfLoginForm.exe.config
+C:\Users\bbdnet2344\source\repos\Craig work items\wpfLoginForm\bin\Debug\wpfLoginForm.exe
+C:\Users\bbdnet2344\source\repos\Craig work items\wpfLoginForm\bin\Debug\wpfLoginForm.pdb
+C:\Users\bbdnet2344\source\repos\Craig work items\wpfLoginForm\obj\Debug\wpfLoginForm.csprojAssemblyReference.cache
+C:\Users\bbdnet2344\source\repos\Craig work items\wpfLoginForm\obj\Debug\MainWindow.g.cs
+C:\Users\bbdnet2344\source\repos\Craig work items\wpfLoginForm\obj\Debug\App.g.cs
+C:\Users\bbdnet2344\source\repos\Craig work items\wpfLoginForm\obj\Debug\wpfLoginForm_MarkupCompile.cache
+C:\Users\bbdnet2344\source\repos\Craig work items\wpfLoginForm\obj\Debug\wpfLoginForm_MarkupCompile.lref
+C:\Users\bbdnet2344\source\repos\Craig work items\wpfLoginForm\obj\Debug\MainWindow.baml
+C:\Users\bbdnet2344\source\repos\Craig work items\wpfLoginForm\obj\Debug\wpfLoginForm.g.resources
+C:\Users\bbdnet2344\source\repos\Craig work items\wpfLoginForm\obj\Debug\wpfLoginForm.Properties.Resources.resources
+C:\Users\bbdnet2344\source\repos\Craig work items\wpfLoginForm\obj\Debug\wpfLoginForm.csproj.GenerateResource.cache
+C:\Users\bbdnet2344\source\repos\Craig work items\wpfLoginForm\obj\Debug\wpfLoginForm.csproj.CoreCompileInputs.cache
+C:\Users\bbdnet2344\source\repos\Craig work items\wpfLoginForm\obj\Debug\wpfLoginForm.exe
+C:\Users\bbdnet2344\source\repos\Craig work items\wpfLoginForm\obj\Debug\wpfLoginForm.pdb

@@ -7,64 +7,24 @@
         mc:Ignorable="d"
         Title="Simple WPF Form" Height="400" Width="500">
     <Window.Resources>
-        <!--<local:User x:Key="Ods"/>-->
-        <local:TextLengthToBoolConverter x:Key="converter" />
-
         <Style TargetType="StackPanel">
             <Setter Property="Background" Value="#1c4873 "/>
         </Style>
 
         <Style TargetType="Button" x:Key="submitBtn">
-            <Setter Property="IsEnabled" Value="False"/>
             <Setter Property="Margin" Value="40,10,40,0"/>
             <Setter Property="Padding" Value="3"/>
             <Setter Property="Background" Value="#50C878"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontFamily" Value="Courier New" />
-            <Style.Triggers>
-                <MultiDataTrigger>
-                    <MultiDataTrigger.Conditions>
-                        <Condition Binding ="{Binding Path=(Validation.HasError), ElementName=ageBox}"
-                                   Value="false"/>
-                        <Condition Binding ="{Binding Path=(Validation.HasError), ElementName=emailBox}"
-                                   Value="false"/>
-                        <Condition Binding ="{Binding Path=(Validation.HasError), ElementName=addressBox}"
-                                   Value="false"/>
-                        <Condition Binding ="{Binding Path=(Validation.HasError), ElementName=firstNameBox}"
-                                   Value="false"/>
-                        <Condition Binding ="{Binding Path=(Validation.HasError), ElementName=lastNameBox}"
-                                   Value="false"/>
-                        <Condition Binding ="{Binding Path=(Validation.HasError), ElementName=lastNameBox}"
-                                   Value="false"/>
-                        <Condition Binding ="{Binding ElementName=generatedName, Path=Text,
-                            Converter={StaticResource converter}
-                            }" Value="true"/>
-                       
-                    </MultiDataTrigger.Conditions>
-                    <Setter Property="IsEnabled" Value="True"/>
-                </MultiDataTrigger>
-            </Style.Triggers>
         </Style>
 
         <Style TargetType="Button" x:Key="generateNameBtn">
             <Setter Property="Background" Value="#50C878"/>
-            <Setter Property="IsEnabled" Value="False"/>
             <Setter Property="Margin" Value="40,10,40,0"/>
             <Setter Property="Padding" Value="3"/>
             <Setter Property="FontSize" Value="15"/>
-
             <Setter Property="FontFamily" Value="Courier New" />
-            <Style.Triggers>
-                <MultiDataTrigger>
-                    <MultiDataTrigger.Conditions>
-                        <Condition Binding ="{Binding Path=(Validation.HasError), ElementName=firstNameBox}"
-                                   Value="false"/>
-                        <Condition Binding ="{Binding Path=(Validation.HasError), ElementName=lastNameBox}"
-                                   Value="false"/>
-                    </MultiDataTrigger.Conditions>
-                    <Setter Property="IsEnabled" Value="True"/>
-                </MultiDataTrigger>
-            </Style.Triggers>
         </Style>
 
         <Style TargetType="TextBlock" x:Key="header">
@@ -98,14 +58,10 @@
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="5,5"/>
             <Setter Property="Background" Value="#cee1f3"/>
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="True">
-                    <Setter Property="ToolTip" Value="{Binding RelativeSource=
-                        {x:Static RelativeSource.Self}, Path=(Validation.Errors)/ErrorContent}"/>
-                </Trigger>
-            </Style.Triggers>
+         
         </Style>
     </Window.Resources>
+    
     <Grid Background="#2b6fb1 ">
         <Grid.ColumnDefinitions>
             <ColumnDefinition  Width="20"/>
@@ -135,76 +91,58 @@
         <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" >
             <TextBlock FontWeight="Medium" Text="WPF Login Form" Style="{StaticResource header}"/>
         </StackPanel>
+        
         <TextBlock Grid.Row="2" Grid.Column="1" Name="firstName" Text="First Name" />
-        <TextBox Grid.Row="2" Grid.Column="2" Name="firstNameBox" TextChanged="firstNameBox_TextChanged" >
-            <TextBox.Text>
-                <Binding Path="FirstName" Mode="TwoWay"  UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <local:RequiredValidator ValidatesOnTargetUpdated="True"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
+        <TextBox Grid.Row="2" Grid.Column="2" Name="firstNameBox" 
+                 Text="{Binding UserModel.FirstName}" />
 
         <TextBlock Grid.Row="3" Grid.Column="1" Name="lastName" Text="Last Name" />
-        <TextBox Grid.Row="3" Grid.Column="2" Name="lastNameBox" TextChanged="lastNameBox_TextChanged"  >
-            <TextBox.Text>
-                <Binding Path="LastName" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <local:RequiredValidator ValidatesOnTargetUpdated="True"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+        <TextBox Grid.Row="3" Grid.Column="2" Name="lastNameBox"
+                 Text="{Binding UserModel.LastName}"/>
+
+
 
         <TextBlock Grid.Row="4" Grid.Column="1" Name="password" Text="Password" />
-        <PasswordBox Grid.Row="4" Grid.Column="2"  Name="passwordBox" Background="#cee1f3" PasswordChanged="passwordBox_PasswordChanged">
-            <!--<PasswordBox.Password>
-                <Binding Path="Password" Mode="OneWayToSource" UpdateSourceTrigger="PropertyChanged">
-                </Binding>
-            </PasswordBox.Password>-->
-        </PasswordBox>
+        <PasswordBox Grid.Row="4" Grid.Column="2"  Name="passwordBox" 
+                     Background="#cee1f3" 
+                    />
 
         <TextBlock Grid.Row="5" Grid.Column="1" Name="email" Text="Email Address" />
-        <TextBox Grid.Row="5" Grid.Column="2" Name="emailBox">
-            <TextBox.Text>
-                <Binding Path="Email" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <local:RequiredValidator ValidatesOnTargetUpdated="True"/>
-                        <local:EmailValidator ValidatesOnTargetUpdated="True"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+        <TextBox Grid.Row="5" Grid.Column="2" Name="emailBox"
+                 Text="{Binding UserModel.Email}"/>
+
 
         <TextBlock Grid.Row="6" Grid.Column="1" Name="age" Text="Age" />
-        <TextBox Grid.Row="6" Grid.Column="2" Name="ageBox">
-            <TextBox.Text>
-                <Binding Path ="Age" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <local:AgeValidator Min="13" Max="80" ValidatesOnTargetUpdated="True"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+        <TextBox Grid.Row="6" Grid.Column="2" Name="ageBox" 
+                 Text="{Binding UserModel.Age}"/>
+
 
         <TextBlock Grid.Row="7" Grid.Column="1" Text="Physical Address" VerticalAlignment="Top"/>
-        <TextBox Grid.Row="7" Grid.Column="2" Name="addressBox" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto">
-            <TextBox.Text>
-                <Binding Path="PhysAddress" Mode="TwoWay">
-                    <Binding.ValidationRules>
-                        <local:RequiredValidator ValidatesOnTargetUpdated="True" />
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+        <TextBox Grid.Row="7" Grid.RowSpan="2" Grid.Column="2" Name="addressBox"
+                 TextWrapping="Wrap" 
+                 VerticalScrollBarVisibility="Auto"
+                 Text="{Binding UserModel.PhysAddress}"/>
 
-        <Button Name="generateNameBtn" Content="Generate username" Grid.Column="1" Grid.Row="9" Click="generateNameBtn_Click" Style="{StaticResource generateNameBtn}"/>
+
+        <Button Name="generateNameBtn" 
+                Content="Generate username" 
+                Grid.Column="1" Grid.Row="9"
+                Command="{Binding GenerateUserNameBtn}" 
+                Style="{StaticResource generateNameBtn}"/>
+        
         <TextBlock Name="generatedName" Grid.Row="9" Grid.Column="2" 
-                   Text="{Binding Path=UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                   TextWrapping="Wrap" Grid.ColumnSpan="2" FontSize="15" FontWeight="Light" Foreground="LightGray"/>
-        <Button Name="submitBtn" Content="Submit" Grid.Column="1" Grid.Row="10" Style="{StaticResource submitBtn}" Height="25" VerticalAlignment="Top" Click="submitBtn_Click"/>
+            Text="{Binding UserModel.UserName}"
+            TextWrapping="Wrap" Grid.ColumnSpan="2" 
+                   FontSize="15" FontWeight="Light"
+                   Foreground="LightGray"/>
+      
+        <Button Name="submitBtn" 
+                Content="Submit"
+                Grid.Column="1" 
+                Grid.Row="10"
+                Style="{StaticResource submitBtn}" 
+                Height="25" VerticalAlignment="Top" 
+                Command="{Binding SubmitUserBtn}"/>
        
     </Grid>
 </Window>
